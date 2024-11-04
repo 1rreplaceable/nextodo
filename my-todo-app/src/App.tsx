@@ -1,35 +1,26 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// src/App.tsx
+import React, { useState } from "react";
+import Nav from "./components/Nav/Nav";
+import Sidebar from "./components/Sidebar/Sidebar";
+import Content from "./components/Content/Content";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App: React.FC = () => {
+    const [selectedView, setSelectedView] = useState("Today");
+    const [selectedFriend, setSelectedFriend] = useState<string | null>(null);
+    const [userId, setUserId] = useState<number>(1);  // userId 설정 예제
+    const [isLoggedIn, setIsLoggedIn] = useState(true); // 로그인 여부
+    const [userName, setUserName] = useState("Denise"); // 사용자 닉네임
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    return (
+        <div className="flex flex-col h-screen">
+            <Nav isLoggedIn={isLoggedIn} userName={userName} />
 
-export default App
+            <div className="flex flex-1">
+                <Sidebar setSelectedView={setSelectedView} />
+                <Content selectedView={selectedView} selectedFriend={selectedFriend} userId={userId} />
+            </div>
+        </div>
+    );
+};
+
+export default App;
