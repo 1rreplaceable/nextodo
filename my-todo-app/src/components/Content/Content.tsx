@@ -1,7 +1,7 @@
 // src/components/Content/Content.tsx
 import React, { useEffect, useState } from "react";
 
-interface Todo {
+type Todo = {
     id: number;
     title: string;
     completed: boolean;
@@ -10,13 +10,13 @@ interface Todo {
     endDate?: string;
 }
 
-interface Comment {
+type Comment = {
     id: number;
     text: string;
     author: string;
 }
 
-interface ContentProps {
+type ContentProps = {
     selectedView: string;
     selectedFriend?: string | null;
     userId: number;
@@ -43,10 +43,11 @@ const Content: React.FC<ContentProps> = ({ selectedView, selectedFriend, userId 
     const openModal = (todo: Todo) => {
         setSelectedTodo(todo);
         setIsModalOpen(true);
-        setComments([
+        const sampleComents: Comment[] =[
             { id: 1, text: "굿!", author: "Stijn" },
             { id: 2, text: "별로", author: "Alice" },
-        ]);
+        ];
+        setComments(sampleComents);
     };
 
     const closeModal = () => {

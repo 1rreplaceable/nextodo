@@ -1,9 +1,9 @@
 // src/components/Nav/Nav.tsx
 import React from "react";
 
-interface NavProps {
+type NavProps = {
     isLoggedIn: boolean;
-    userName?: string;
+    userName: string;
 }
 
 const Nav: React.FC<NavProps> = ({ isLoggedIn, userName }) => {
@@ -20,8 +20,11 @@ const Nav: React.FC<NavProps> = ({ isLoggedIn, userName }) => {
                         <li className="font-medium text-gray-700">{userName}</li>
                     </>
                 ) : (
-                    <li className="font-medium text-blue-500">Login</li>
-                )}
+                    <>
+                        <li className="font-medium text-blue-500">Login</li>
+                        <li className="font-medium text-blue-500">Signup</li>
+                    </>
+                    )}
             </ul>
         </nav>
     );

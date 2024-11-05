@@ -2,12 +2,12 @@
 import React from "react";
 
 // SidebarProps 타입 정의
-interface SidebarProps {
+type SidebarProps = {
     setSelectedView: (view: "Today" | "AllTasks" | "Completed" | "AddTask" | "FriendTasks") => void;
 }
 
 // 친구 목록에 사용할 친구 데이터 타입
-interface Friend {
+type Friend = {
     id: number;
     name: string;
 }
